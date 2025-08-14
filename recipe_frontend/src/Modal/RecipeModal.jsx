@@ -23,7 +23,7 @@ const RecipeModal = ({ data: initialData, recipeId, onClose, children }) => {
     if (!initialData && recipeId) {
       setLoading(true);
       axios
-        .get(`http://localhost:5000/api/recipes/${recipeId}`)
+        .get(`https://chapter-7-recipe.onrender.com/api/recipes/${recipeId}`)
         .then((res) => {
           setData(res.data);
           setCurrentServings(res.data.servings || 1);
@@ -40,7 +40,7 @@ const RecipeModal = ({ data: initialData, recipeId, onClose, children }) => {
     if (showComments && recipeId) {
       setLoadingComments(true);
       axios
-        .get(`http://localhost:5000/api/recipes/${recipeId}/comments`)
+        .get(`https://chapter-7-recipe.onrender.com/api/recipes/${recipeId}/comments`)
         .then((res) => setComments(res.data))
         .catch((err) => console.error("Failed to fetch comments", err))
         .finally(() => setLoadingComments(false));
@@ -74,14 +74,14 @@ const RecipeModal = ({ data: initialData, recipeId, onClose, children }) => {
     try {
       // Post comment
       const commentRes = await axios.post(
-        `http://localhost:5000/api/recipes/${recipeId}/comments`,
+        `https://chapter-7-recipe.onrender.com/api/recipes/${recipeId}/comments`,
         { content: userComment },
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
       // Post rating
       await axios.post(
-        `http://localhost:5000/api/recipes/${recipeId}/rate`,
+        `https://chapter-7-recipe.onrender.com/api/recipes/${recipeId}/rate`,
         { rating: userRating },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -252,7 +252,7 @@ RecipeModal.Actions = function RecipeModalActions() {
   });
 
   try {
-    await axios.post("http://localhost:5000/api/email/send", {
+    await axios.post("https://chapter-7-recipe.onrender.com/api/email/send", {
       recipientEmail: user.email,
       recipe: data,
     });

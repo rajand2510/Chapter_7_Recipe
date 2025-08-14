@@ -25,7 +25,7 @@ const Favorite = () => {
       }
       try {
         const recipeRequests = favorites.map((fav) =>
-          axios.get(`http://localhost:5000/api/recipes/${fav._id}`)
+          axios.get(`https://chapter-7-recipe.onrender.com/api/recipes/${fav._id}`)
         );
         const responses = await Promise.all(recipeRequests);
         setFavoriteRecipes(responses.map((res) => res.data));

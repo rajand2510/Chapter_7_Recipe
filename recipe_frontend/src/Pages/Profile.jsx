@@ -43,7 +43,7 @@ const Profile = () => {
         try {
             setIsLoading(true);
             const token = localStorage.getItem('token');
-            const res = await axios.get('http://localhost:5000/api/users/profile', {
+            const res = await axios.get('https://chapter-7-recipe.onrender.com/api/users/profile', {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setCreatedRecipes(res.data.createdRecipes || []);
@@ -69,7 +69,7 @@ const Profile = () => {
 
     const handleImageClick = async (recipeId) => {
         try {
-            const res = await axios.get(`http://localhost:5000/api/recipes/${recipeId}`);
+            const res = await axios.get(`https://chapter-7-recipe.onrender.com/api/recipes/${recipeId}`);
             setViewRecipe(res.data);
             setIsViewModalOpen(true);
         } catch (err) {
@@ -98,7 +98,7 @@ const Profile = () => {
                             toast.dismiss(t.id); // Close the toast
                             try {
                                 const token = localStorage.getItem('token');
-                                await axios.delete(`http://localhost:5000/api/recipes/${recipeId}`, {
+                                await axios.delete(`https://chapter-7-recipe.onrender.com/api/recipes/${recipeId}`, {
                                     headers: { Authorization: `Bearer ${token}` }
                                 });
                                 setCreatedRecipes(prev => prev.filter(r => r._id !== recipeId));
@@ -143,7 +143,7 @@ const Profile = () => {
             };
 
             if (isAddMode) {
-                await axios.post('http://localhost:5000/api/recipes', payload, {
+                await axios.post('https://chapter-7-recipe.onrender.comhttp://localhost:5000/api/recipes', payload, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                         "Content-Type": "application/json"
@@ -161,7 +161,7 @@ const Profile = () => {
                 });
             } else {
                 await axios.put(
-                    `http://localhost:5000/api/recipes/${editRecipe._id}`,
+                    `https://chapter-7-recipe.onrender.com/api/recipes/${editRecipe._id}`,
                     payload,
                     {
                         headers: {

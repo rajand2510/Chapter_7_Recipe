@@ -59,7 +59,7 @@ const {darkMode} = useAuth();
         if (selectedCuisine !== "all") params.append("cuisine", selectedCuisine);
         if (maxTime !== "all") params.append("maxTime", maxTime);
 
-        const res = await fetch(`http://localhost:5000/api/recipes?${params.toString()}`);
+        const res = await fetch(`https://chapter-7-recipe.onrender.com/api/recipes?${params.toString()}`);
         if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
         const data = await res.json();
 
@@ -89,7 +89,7 @@ const {darkMode} = useAuth();
       const token = localStorage.getItem("token");
       if (!token) return; // Only fetch if logged in
 
-      const res = await fetch(`http://localhost:5000/api/recommendations`, {
+      const res = await fetch(`https://chapter-7-recipe.onrender.com/api/recommendations`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -117,7 +117,7 @@ const {darkMode} = useAuth();
   useEffect(() => {
     if (recipeIdFromUrl) {
       axios
-        .get(`http://localhost:5000/api/recipes/${recipeIdFromUrl}`)
+        .get(`https://chapter-7-recipe.onrender.com/api/recipes/${recipeIdFromUrl}`)
         .then((res) => setSelectedRecipe(res.data))
         .catch((err) => {
           console.error("Failed to fetch recipe", err);

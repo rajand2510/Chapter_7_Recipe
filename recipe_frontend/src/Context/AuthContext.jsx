@@ -61,7 +61,7 @@ const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      const res = await axios.post('https://chapter-7-recipe.onrender.com/api/auth/login', { email, password });
       saveUser(res.data);
       toast.success('Login successful');
       navigate('/');
@@ -72,7 +72,7 @@ const AuthProvider = ({ children }) => {
 
   const signup = async (username, email, password) => {
     try {
-      await axios.post('http://localhost:5000/api/auth/register', { username, email, password });
+      await axios.post('https://chapter-7-recipe.onrender.com/api/auth/register', { username, email, password });
       await login(email, password);
       toast.success('Signup successful');
     } catch (err) {

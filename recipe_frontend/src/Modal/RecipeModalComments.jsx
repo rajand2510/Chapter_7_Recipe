@@ -16,7 +16,7 @@ export default function RecipeModalComments() {
   const fetchComments = async () => {
     try {
       setLoadingComments(true);
-      const res = await axios.get(`http://localhost:5000/api/recipes/${recipeId}/comments`);
+      const res = await axios.get(`https://chapter-7-recipe.onrender.com/api/recipes/${recipeId}/comments`);
       setComments(res.data);
     } catch (err) {
       console.error("Failed to load comments:", err);

@@ -20,7 +20,7 @@ export const useFavorite = () => {
       setLoading(true);
       const token = localStorage.getItem("token");
       if (!token) return;
-      const res = await axios.get("http://localhost:5000/api/users/profile", {
+      const res = await axios.get("https://chapter-7-recipe.onrender.com/api/users/profile", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setFavorites(res.data?.favorites || []);
@@ -49,7 +49,7 @@ export const useFavorite = () => {
 
     try {
       await axios.post(
-        `http://localhost:5000/api/users/favorites/${recipeId}`,
+        `https://chapter-7-recipe.onrender.com/api/users/favorites/${recipeId}`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -70,7 +70,7 @@ export const useFavorite = () => {
 
     try {
       await axios.delete(
-        `http://localhost:5000/api/users/favorites/${recipeId}`,
+        `https://chapter-7-recipe.onrender.com/api/users/favorites/${recipeId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setFavorites((prev) => prev.filter((fav) => fav._id !== recipeId));
