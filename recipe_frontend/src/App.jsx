@@ -12,14 +12,16 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Toaster } from 'react-hot-toast'
 import ProtectedRoute from './ProtectedRoute'
 import PublicRoute from './PublicRoute'
-import { SearchProvider } from './Context/SearchContext'
+
 import Favorite from './Pages/Favorite'
 import { useEffect } from 'react'
 import { useAuth } from './Context/AuthContext'
+import { SearchProvider } from './context/SearchContext'
+
 
 function App() {
   const location = useLocation();
-const {darkMode} = useAuth();
+  const { darkMode } = useAuth();
   useEffect(() => {
     if (darkMode) {
       document.body.classList.add("dark");
@@ -58,7 +60,7 @@ const {darkMode} = useAuth();
   return (
     <>
 
-<SearchProvider>
+      <SearchProvider>
         <Navbar />
 
         <AnimatePresence mode="wait">
@@ -72,6 +74,7 @@ const {darkMode} = useAuth();
               }
             />
 
+           
             <Route
               path="/profile"
               element={
@@ -82,7 +85,7 @@ const {darkMode} = useAuth();
                 </motion.div>
               }
             />
- <Route
+            <Route
               path="/favorite"
               element={
                 <motion.div {...pageAnimation}>
@@ -126,8 +129,8 @@ const {darkMode} = useAuth();
             />
           </Routes>
         </AnimatePresence>
-</SearchProvider>
- 
+      </SearchProvider>
+
 
       <Toaster position="top-right" />
     </>

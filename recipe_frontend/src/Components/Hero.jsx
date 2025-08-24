@@ -15,7 +15,7 @@ const Hero = () => {
           </p>
         </div>
         <div className="border-2  h-[25%] rounded-lg overflow-hidden">
-         <img className=' w-full h-full object-cover' src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" alt="" />
+         <img className=' w-full h-full object-cover' src="https://images.unsplash.com/photo-1608032077018-c9aad9565d29?q=80&w=1170&auto=format&fit=crop" alt="" />
         </div>
       </div>
       <div className='space-y-4 h-full w-[50%]'>
